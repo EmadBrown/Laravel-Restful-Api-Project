@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+ 
 
 use App\Employee;
 use DB;
@@ -28,17 +29,29 @@ class EmployeeController extends Controller
           $employee = new Employee;
           $this->validate($request, [
               'firstName'=> 'required|min:3',
-              'lasrName'=> 'required|min:3',
-              'email' => 'unique:connection.users,email_address',
-              'phone'=>  'required|numeric|phone_number|size:11',
+              'lastName'=> 'required|min:3',
+              'email' => 'required',
+              'phone'=>  'required',
               'address'=> 'required',
               'jobTitle'=> 'required',
               'salary'=> 'required|numeric',
-              'description' =>'required',
-              'startDate' => 'required|date_parse_from_format',
-              'endDate' => 'required|date_parse_from_format',
+              'startDate' => 'required',
+              'endDate' => 'required',
               
           ]);
+          
+          $employee->firstName =  $request->firstName;
+          $employee->lastName =  $request->lastName;
+          $employee->email =  $request->email;
+          $employee->phone =  $request->phone;
+          $employee->address =  $request->address;
+          $employee->jobTitle =  $request->jobTitle;
+          $employee->salary =  $request->salary;
+          $employee->description =  $request->description;
+          $employee->startDate =  $request->startDate;
+          $employee->endDate =  $request->endDate;
+          $employee -> save(); 
+          return back();
     }
 
     /**

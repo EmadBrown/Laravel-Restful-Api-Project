@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::resource('employee', 'EmployeeController');
 
 Route::get('employee' ,'EmployeeController@show');
+
+Route::get('add', function () {
+    return view('employee/add');
+});
+
+Route::post('addEmployee' , 'EmployeeController@add');
+
+
