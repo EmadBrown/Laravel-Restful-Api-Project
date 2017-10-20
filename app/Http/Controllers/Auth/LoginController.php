@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -32,8 +32,8 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('guest')->except('logout');
+       return view('auth.login');
     }
 }

@@ -25,4 +25,6 @@ Route::get('add', function () {
 
 Route::post('addEmployee' , 'EmployeeController@add');
 
+Route::get('login' , 'auth\LoginController@index');
+
 

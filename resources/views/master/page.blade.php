@@ -47,10 +47,19 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+          <div class=" text-right">
+          <div class="row">
+               <div>
+                        <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+              </div>
+                <div class="col-sm-2">
+                           <a class="btn btn-outline-success my-2 my-sm-0" href="{{ url('login') }}">Login</a>
+              </div>
+          </div>
+         </div>
       </div>
     </nav>
 
@@ -59,7 +68,7 @@
     <div class="container">
         <hr>
       
-                  {% block content %}{% endblock content %}
+                @yield('content')
                   
       <hr>
 
