@@ -28,3 +28,8 @@ Route::post('addEmployee' , 'EmployeeController@add');
 Route::get('login' , 'auth\LoginController@index');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin');
