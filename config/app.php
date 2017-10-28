@@ -186,6 +186,9 @@ return [
         
        // Form HTML
           Collective\Html\HtmlServiceProvider::class,
+        
+        //  Laravel Tinker
+          Laravel\Tinker\TinkerServiceProvider::class,
     ],
 
     /*

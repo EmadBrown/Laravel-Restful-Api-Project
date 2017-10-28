@@ -32,4 +32,14 @@ Route::get('login' , 'auth\LoginController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::prefix('admin')->group(function(){
+Route::get('/', 'AdminController@index')->name('admin.dashbard');
+Route::get('/login', 'auth\AdminController@showLoginForm')->name('admin.login');
+Route::post('/login', 'auth\AdminController@login')->name('admin.login.submit');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
