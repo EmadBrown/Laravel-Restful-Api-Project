@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -32,8 +33,20 @@ class LoginController extends Controller
      *
      * @return void
      */
+    
     public function index()
     {
        return view('auth.login');
+    }
+    
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => ['logout', 'userLogout']]);
+    }
+
+    public function userLogout()
+    {
+        Auth::guard('web')->logout();
+        return redirect('/');
     }
 }

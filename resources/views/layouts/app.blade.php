@@ -52,17 +52,20 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
+                                    
+                                    @if (\Request::is('admin'))
+                                            <li>
+                                                    <a href="{{ route('admin.logout') }}">
+                                                      Logout
+                                                  </a>
+                                            </li>
+                                    @else
+                                            <li>
+                                                    <a href="{{ route('user.logout') }}">
+                                                      Logout
+                                                    </a>
+                                            </li>
+                                    @endif
                                 </ul>
                             </li>
                         @endguest
