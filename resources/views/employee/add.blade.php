@@ -9,8 +9,8 @@
             <h1> Add New Employee!</h1>
             <hr>
             {!! Form::open(['route' => 'employee.store']) !!}
-                {{ Form::label('fristName' , 'First Name:')  }}
-                {{ Form::text('fristName' ,  null , array('class' => 'form-control')) }}
+                {{ Form::label('firstName' , 'First Name:')  }}
+                {{ Form::text('firstName' ,  null , array('class' => 'form-control')) }}
                 
                 {{ Form::label('lastName' , 'Last Name:') }}
                 {{ Form::text('lastName' ,  null , array('class' => 'form-control')) }}

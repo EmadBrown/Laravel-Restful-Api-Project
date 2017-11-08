@@ -23,8 +23,6 @@ class CreateEmployeesTable extends Migration
                 $table->string('jobTitle');
                 $table->string('salary');         
                 $table->string('description');
-                $table->datetime('startDate');         
-                $table->datetime('endDate');
                 $table->rememberToken();
                 $table->timestamps();
         });

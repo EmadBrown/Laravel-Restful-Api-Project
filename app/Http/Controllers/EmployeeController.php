@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Employee;
+
 class EmployeeController extends Controller
 {
     /**
@@ -34,7 +36,39 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // validate the data
+        $this->validate($request, array(
+                'firstName' => 'required|max:225',
+                'lastName' => 'required|max:225',
+                'email' => 'required',
+                'phone' => 'required|max:225',
+                'address' => 'required|max:225',
+                'jobTitle' => 'required|max:225',
+                'salary' => 'required|max:225',
+                'description' => 'required|max:225'
+        ));
+         
+        // store in the database
+            $employee = new Employee();
+            
+            // inserting data by create (other way)
+                    //    $this->employee = $employee;
+                    //    employee::create($request->all());
+            
+            $employee->firstName = $request->firstName;
+            $employee->lastName = $request->lastName;
+            $employee->email = $request->email;
+            $employee->phone = $request->phone;
+            $employee->address = $request->address;
+            $employee->jobTitle = $request->jobTitle;
+            $employee->salary = $request->salary;
+            $employee->description = $request->description;
+            
+            $employee->save();
+
+        // redirect to another page
+        return redirect()->route('employee.show' , $employee->id);
+
     }
 
     /**
