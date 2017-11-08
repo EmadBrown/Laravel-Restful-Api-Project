@@ -183,12 +183,12 @@ return [
         
         // Twig 
           TwigBridge\ServiceProvider::class,
-        
-       // Form HTML
-          Collective\Html\HtmlServiceProvider::class,
-        
+
         //  Laravel Tinker
           Laravel\Tinker\TinkerServiceProvider::class,
+        
+        // Laravel  Form & HTML
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*

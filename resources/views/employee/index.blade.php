@@ -12,6 +12,7 @@
                             <i>{{ $employee->id   }} </i>
                             <i> {{ $employee->firstName  }}</i>
                             <i>{{  $employee->lastName }}</i>
+                            <i> <a href="{{ $employee->id }}/view" class="btn btn-danger">View</a>
                     @endforeach
  
                 </div>

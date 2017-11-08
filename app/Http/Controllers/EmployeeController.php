@@ -3,16 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- 
-
-use App\Employee;
-use DB;
 
 class EmployeeController extends Controller
 {
-    
-
-
     /**
      * Display a listing of the resource.
      *
@@ -20,38 +13,28 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('employee.index');
+          return 'index';
     }
 
- 
-    public function add(Request $request)
-    {     
-          $employee = new Employee;
-          $this->validate($request, [
-              'firstName'=> 'required|min:3',
-              'lastName'=> 'required|min:3',
-              'email' => 'required',
-              'phone'=>  'required',
-              'address'=> 'required',
-              'jobTitle'=> 'required',
-              'salary'=> 'required|numeric',
-              'startDate' => 'required',
-              'endDate' => 'required',
-              
-          ]);
-          
-          $employee->firstName =  $request->firstName;
-          $employee->lastName =  $request->lastName;
-          $employee->email =  $request->email;
-          $employee->phone =  $request->phone;
-          $employee->address =  $request->address;
-          $employee->jobTitle =  $request->jobTitle;
-          $employee->salary =  $request->salary;
-          $employee->description =  $request->description;
-          $employee->startDate =  $request->startDate;
-          $employee->endDate =  $request->endDate;
-          $employee -> save(); 
-          return back();
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('employee.add');
+    }
+
+    /**s
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -60,12 +43,11 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-       $employees = DB::table("employees")->get();
-             return view('employee.index', ['employees' => $employees]);
+        //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
