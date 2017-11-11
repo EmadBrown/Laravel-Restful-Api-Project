@@ -1,6 +1,13 @@
- 
-                            <i>{{ $employee->id   }} </i>
-                            <i> {{ $employee->firstName  }}</i>
-                            <i>{{  $employee->lastName }}</i>
-          
+@extends('layouts.app')
+
+
+@section('title', '| View Employee ')
+
+@section('content')
+
+    <div class="container">
+            <p class="lead"> This is the new employee </p>
+    </div>
+
+@endsection
  

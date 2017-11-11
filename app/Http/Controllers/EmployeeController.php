@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Session;
 
 use App\Employee;
 
@@ -40,7 +42,7 @@ class EmployeeController extends Controller
         $this->validate($request, array(
                 'firstName' => 'required|max:225',
                 'lastName' => 'required|max:225',
-                'email' => 'required',
+                'email' => Rule::unique('employees')->where(function ($query) {  return $query->where('id', 1); }),
                 'phone' => 'required|max:225',
                 'address' => 'required|max:225',
                 'jobTitle' => 'required|max:225',
@@ -65,6 +67,8 @@ class EmployeeController extends Controller
             $employee->description = $request->description;
             
             $employee->save();
+            
+            Session::flash('success','The New Employee was successfully save!');
 
         // redirect to another page
         return redirect()->route('employee.show' , $employee->id);
@@ -79,7 +83,7 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('employee.view');
     }
 
     /**

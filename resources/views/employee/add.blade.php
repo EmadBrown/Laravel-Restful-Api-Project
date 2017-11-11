@@ -16,10 +16,10 @@
             <hr>
             {!! Form::open(['route' => 'employee.store' , 'data-parsley-validate' => '']) !!}
                 {{ Form::label('firstName' , 'First Name:')  }}
-                {{ Form::text('firstName' ,  null , array('class' => 'form-control' , 'required' =>'' , 'type' => 'string', 'min' => '2'  )) }}
+                {{ Form::text('firstName' ,  null , array('class' => 'form-control' , 'required' =>''   )) }}
                 
                 {{ Form::label('lastName' , 'Last Name:') }}
-                {{ Form::text('lastName' ,  null , array('class' => 'form-control' , 'required' =>'' , 'data-parsley-type' => 'alpha' , 'min' => '2')) }}
+                {{ Form::text('lastName' ,  null , array('class' => 'form-control' , 'required' =>''  )) }}
                 
                 {{ Form::label('email' , 'Email:') }}
                 {{ Form::text('email' ,  null , array('class' => 'form-control' , 'required' =>'' , 'data-parsley-type' => 'email' )) }}
@@ -31,13 +31,13 @@
                 {{ Form::text('address' ,  null , array('class' => 'form-control' , 'required' =>'')) }}
                 
                 {{ Form::label('jobTitle' , 'Job Title:') }}
-                {{ Form::text('jobTitle' ,  null , array('class' => 'form-control' , 'required' =>'' , 'data-parsley-type' => 'alphanum' , 'min' => '2' )) }}
+                {{ Form::text('jobTitle' ,  null , array('class' => 'form-control' , 'required' =>'' )) }}
                 
                 {{ Form::label('salary' , 'Salary:') }}
                 {{ Form::text('salary' ,  null , array('class' => 'form-control' , 'required' =>'' , 'data-parsley-type' => 'number')) }}
                 
                 {{ Form::label('description' , 'Description:') }}
-                {{ Form::textarea('description' ,  null , array('class' => 'form-control' , 'required' =>'' , 'data-parsley-range' => '[6,100]')) }}
+                {{ Form::textarea('description' ,  null , array('class' => 'form-control' , 'required' =>'' )) }}
                 <br>
                   {{ Form::submit('Add New Employee' , array('class' => 'btn btn-success btn-lm')) }}
                 
