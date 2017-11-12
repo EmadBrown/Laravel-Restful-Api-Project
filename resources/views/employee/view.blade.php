@@ -6,7 +6,8 @@
 @section('content')
 
     <div class="container">
-            <p class="lead"> This is the new employee </p>
+        <h2>{{ $employee->firstName }} {{ $employee->lastName }} </h2>
+            <p class="lead"> {{ $employee->email}}</p>
     </div>
 
 @endsection

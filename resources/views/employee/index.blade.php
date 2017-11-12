@@ -1,5 +1,8 @@
 
-@extends('master.page')
+@extends('layouts.app')
+
+@section('title', '| View Employees')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -12,7 +15,8 @@
                             <i>{{ $employee->id   }} </i>
                             <i> {{ $employee->firstName  }}</i>
                             <i>{{  $employee->lastName }}</i>
-                            <i> <a href="{{ $employee->id }}/view" class="btn btn-danger">View</a>
+                            </br>
+                            <!--<i> <a href="{{ $employee->id }}/view" class="btn btn-danger">View</a>-->
                     @endforeach
  
                 </div>

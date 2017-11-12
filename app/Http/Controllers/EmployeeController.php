@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Session;
+use DB;
 
 use App\Employee;
 
@@ -17,7 +18,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-          return 'index';
+        $employees = Employee::all();;
+            
+          return view('employee.index', compact('employees'));
     }
 
     /**
@@ -83,7 +86,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        return view('employee.view');
+        $employee = Employee::find($id);
+        return view('employee.view')->withEmployee($employee);
     }
 
     /**
