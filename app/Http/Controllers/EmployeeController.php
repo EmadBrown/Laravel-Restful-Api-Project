@@ -18,8 +18,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();;
-            
+        // create a variabale and store all the information of Employee from the database
+        $employees = Employee::all();  
+        
+        // return a view and pass in the above variabale
           return view('employee.index', compact('employees'));
     }
 
