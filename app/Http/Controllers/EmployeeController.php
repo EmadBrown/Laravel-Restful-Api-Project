@@ -100,7 +100,11 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        // find the employee in the database and save as var
+        $employee = Employee::find($id);
+        // return the view and in pass in the var we pereviously created
+        return view('employee.edit')->withEmployee($employee);
+        
     }
 
     /**
@@ -112,7 +116,39 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // validate the data
+        $this->validate($request, array(
+                'firstName' => 'required|max:225',
+                'lastName' => 'required|max:225',
+                'email' => Rule::unique('employees')->where(function ($query) {  return $query->where('id', 1); }),
+                'phone' => 'required|max:225',
+                'address' => 'required|max:225',
+                'jobTitle' => 'required|max:225',
+                'salary' => 'required|max:225',
+                'description' => 'required|max:225'
+        ));
+                
+        // store in the database where Employee of $id
+            $employee =  Employee::find($id);
+
+            $employee->firstName = $request->firstName;
+            $employee->lastName = $request->lastName;
+            $employee->email = $request->email;
+            $employee->phone = $request->phone;
+            $employee->address = $request->address;
+            $employee->jobTitle = $request->jobTitle;
+            $employee->salary = $request->salary;
+            $employee->description = $request->description;
+            
+            $employee->save();
+            
+            // set flash data with success message
+            Session::flash('success','The changes of the Employee  was successfully saved!');
+
+        // redirect  with flash data to  employee.view
+        return redirect()->route('employee.show' , $employee->id);
+                
+                
     }
 
     /**

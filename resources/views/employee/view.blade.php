@@ -26,7 +26,7 @@
                 <div class="col-sm-6">
                     <div class="well">
                         <dl class="dl-horizontal">
-                            <dt> Create At:</dt>
+                            <dt> Created At:</dt>
                             <dd>{{ date( 'M j,Y h:ia' ,  strtotime($employee->created_at))  }}</dd>
                         </dl>
 
