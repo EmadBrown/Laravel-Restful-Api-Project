@@ -47,14 +47,15 @@ class EmployeeController extends Controller
         $this->validate($request, array(
                 'firstName' => 'required|max:225',
                 'lastName' => 'required|max:225',
-                'email' => Rule::unique('employees')->where(function ($query) {  return $query->where('id', 1); }),
+                 'email'  => 'required|email|unique:employees,email',
                 'phone' => 'required|max:225',
                 'address' => 'required|max:225',
                 'jobTitle' => 'required|max:225',
                 'salary' => 'required|max:225',
                 'description' => 'required|max:225'
         ));
-         
+        
+ 
         // store in the database
             $employee = new Employee();
             
@@ -116,11 +117,12 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+            $employee =  Employee::find($id);
          // validate the data
         $this->validate($request, array(
                 'firstName' => 'required|max:225',
                 'lastName' => 'required|max:225',
-                'email' => Rule::unique('employees')->where(function ($query) {  return $query->where('id', 1); }),
+               'email'  => 'required|email|unique:employees,email,'.$employee->id,
                 'phone' => 'required|max:225',
                 'address' => 'required|max:225',
                 'jobTitle' => 'required|max:225',
@@ -159,6 +161,12 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employee = Employee::find($id);
+        
+        $employee->delete();
+        
+        Session::flash('success', 'The Employee was successfully deleted');
+        
+        return redirect()->route('employee.index');
     }
 }

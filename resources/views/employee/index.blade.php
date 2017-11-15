@@ -38,9 +38,6 @@
                                                         <th>  {!! Html::linkRoute('employee.edit' , 'Edit' , array($employee->id) , 
                                                                          array('class' =>'btn btn-primary btn-block')) !!} 
                                                         </th>
-                                                        <th>  {!! Html::linkRoute('employee.destroy' , 'Delete' , array($employee->id) , 
-                                                                        array('class' =>'btn btn-danger  btn-block')) !!} 
-                                                        </th>
                                             </tr>
                                             @endforeach
                                     </tbody>
