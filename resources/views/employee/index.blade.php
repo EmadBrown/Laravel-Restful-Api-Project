@@ -41,6 +41,11 @@
                                             </tr>
                                             @endforeach
                                     </tbody>
+                                    
+                        </table>
+                        <div class="text-center">
+                                              {!! $employees->links() !!}
+                       </div>
                   </div>
         </div>
 </div>

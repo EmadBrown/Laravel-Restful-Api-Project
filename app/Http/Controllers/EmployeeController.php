@@ -18,8 +18,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        // create a variabale and store all the information of Employee from the database
-        $employees = Employee::all();  
+        // view all the employees from Employees database + Pagination by the last employee has inserted.
+        $employees = Employee::orderBy('id' , 'desc')->paginate(10);  //  It can use latest() insteal of orderBy('id' , 'desc')
         
         // return a view and pass in the above variabale
           return view('employee.index', compact('employees'));
