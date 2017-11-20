@@ -47,7 +47,7 @@ class EmployeeController extends Controller
         $this->validate($request, array(
                 'firstName' => 'required|max:225',
                 'lastName' => 'required|max:225',
-                 'email'  => 'required|email|unique:admin,email',
+                 'email'  => 'required|email|unique:employees,email',
                 'phone' => 'required|max:225',
                 'address' => 'required|max:225',
                 'jobTitle' => 'required|max:225',
@@ -77,8 +77,8 @@ class EmployeeController extends Controller
             Session::flash('success','The New Employee was successfully save!');
 
         // redirect to another page
-        return redirect()->route('employee.show' , $employee->id);
-
+   return redirect()->route('employee.show' , $employee->id);
+ 
     }
 
     /**
