@@ -59,13 +59,19 @@
 
                                 <ul class="dropdown-menu">
                                     
-                                    @if (\Request::is('admin') and Auth::guard('admin')->check())
+                                    @if (Auth::guard('admin')->check())
+                                            <li>
+                                                  {!! Html::linkRoute('admin.profile' , 'Profile' , array(Auth::user()->id )) !!}
+                                            </li>
                                             <li>
                                                     <a href="{{ route('admin.logout') }}">
                                                       Logout
                                                   </a>
                                             </li>
                                     @else
+                                            <li>
+                                                 {!! Html::linkRoute('user.profile' , 'Profile' , array(Auth::user()->id )) !!}
+                                            </li>
                                             <li>
                                                     <a href="{{ route('user.logout') }}">
                                                       Logout
@@ -81,13 +87,18 @@
         </nav>
 @include('partials._messages')
 
-        @yield('content')
+        @yield('content')       
 
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
+     <script src="{{ asset('js/jquery.min.js') }}"></script>
         <!-- Parsley  -->
      @yield('parsley-script')
+     
+     
+        @yield('script')
 </body>
 </html>

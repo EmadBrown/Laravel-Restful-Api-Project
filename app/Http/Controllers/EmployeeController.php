@@ -47,7 +47,7 @@ class EmployeeController extends Controller
         $this->validate($request, array(
                 'firstName' => 'required|max:225',
                 'lastName' => 'required|max:225',
-                 'email'  => 'required|email|unique:employees,email',
+                 'email'  => 'required|email|unique:admin,email',
                 'phone' => 'required|max:225',
                 'address' => 'required|max:225',
                 'jobTitle' => 'required|max:225',
